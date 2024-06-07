@@ -7,7 +7,7 @@ import (
 
 	"github.com/fatih/color"
 	"github.com/go-playground/validator/v10"
-	rx "github.com/pixel365/goreydenx"
+	"github.com/pixel365/goreydenx"
 	"github.com/pixel365/rdnx-cli/helpers"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
@@ -26,7 +26,7 @@ type _password struct {
 	Password string `validate:"required,gte=6"`
 }
 
-func NewLoginCommands() *cobra.Command {
+func NewLoginCommand() *cobra.Command {
 	return &cobra.Command{
 		Use:     "login",
 		Aliases: []string{"l"},
@@ -91,7 +91,7 @@ Loop:
 }
 
 func login(creds *creds, config *helpers.Config) {
-	client := rx.NewClient(creds.Email, creds.Password).Auth()
+	client := goreydenx.NewClient(creds.Email, creds.Password).Auth()
 	if client.Token != nil {
 		token := helpers.Creds{
 			Email:       creds.Email,

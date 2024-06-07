@@ -9,7 +9,7 @@ import (
 	"github.com/fatih/color"
 	rx "github.com/pixel365/goreydenx"
 	"github.com/pixel365/goreydenx/model"
-	o "github.com/pixel365/goreydenx/orders"
+	"github.com/pixel365/goreydenx/orders"
 	"github.com/pixel365/goreydenx/user"
 	"github.com/pixel365/rdnx-cli/helpers"
 )
@@ -188,7 +188,7 @@ Loop:
 	}
 
 	if allow {
-		result, err := o.CreateStream(client, params)
+		result, err := orders.CreateStream(client, params)
 		helpers.Marshal(result, err)
 		helpers.WaitingTask(client, result)
 	} else {

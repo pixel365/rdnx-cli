@@ -8,13 +8,15 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func NewWhoAmICommands() *cobra.Command {
+func NewWhoAmICommand() *cobra.Command {
 	return &cobra.Command{
 		Use:     "whoami",
 		Aliases: []string{"i"},
 		Short:   "View account currently in use",
-		Run: func(cmd *cobra.Command, args []string) {
+		PreRun: func(cmd *cobra.Command, args []string) {
 			helpers.AuthGuard()
+		},
+		Run: func(cmd *cobra.Command, args []string) {
 			config := helpers.LoadConfig()
 			color.Green(fmt.Sprintf("You are logged in as \"%s\"", config.CurrentAccountName()))
 		},

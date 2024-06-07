@@ -23,14 +23,14 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.AddCommand(NewAccountsCommands())
-	rootCmd.AddCommand(NewPricesCommands())
-	rootCmd.AddCommand(NewMeCommands())
-	rootCmd.AddCommand(NewWhoAmICommands())
-	rootCmd.AddCommand(NewTrafficCommands())
-	rootCmd.AddCommand(NewLogoutCommands())
-	rootCmd.AddCommand(NewLoginCommands())
-	rootCmd.AddCommand(NewOrdersCommands())
-	rootCmd.AddCommand(NewInfoCommands())
-	rootCmd.AddCommand(NewResetCommands())
+	rootCmd.AddCommand(NewAccountsCommand())
+	rootCmd.AddCommand(NewPricesCommand())
+	rootCmd.AddCommand(NewMeCommand())
+	rootCmd.AddCommand(NewWhoAmICommand())
+	rootCmd.AddCommand(NewTrafficCommand())
+	rootCmd.AddCommand(NewLogoutCommand())
+	rootCmd.AddCommand(NewLoginCommand())
+	rootCmd.AddCommand(NewOrdersCommand())
+	rootCmd.AddCommand(NewInfoCommand())
+	rootCmd.AddCommand(NewResetCommand())
 }

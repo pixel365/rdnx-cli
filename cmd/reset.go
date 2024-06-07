@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func NewResetCommands() *cobra.Command {
+func NewResetCommand() *cobra.Command {
 	return &cobra.Command{
 		Use:   "reset",
 		Short: "Reset all settings",

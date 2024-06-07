@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func NewLogoutAllCmd() *cobra.Command {
+func NewLogoutAllCommand() *cobra.Command {
 	return &cobra.Command{
 		Use:     "all",
 		Aliases: []string{"a"},

@@ -1,8 +1,6 @@
 package helpers
 
-import (
-	rx "github.com/pixel365/goreydenx"
-)
+import "github.com/pixel365/goreydenx"
 
 const anonymous = "anonymous"
 
@@ -73,19 +71,19 @@ func (o *Config) Logout(all bool) bool {
 	return false
 }
 
-func (o *Config) RxClient() *rx.Client {
+func (o *Config) RxClient() *goreydenx.Client {
 	if !o.IsAuthenticated() {
 		return nil
 	}
 
 	creds, _ := o.GetCurrent()
-	token := rx.Token{
+	token := goreydenx.Token{
 		AccessToken: creds.AccessToken,
 		ExpiresIn:   creds.ExpiresIn,
 		TokenType:   creds.TokenType,
 	}
 
-	return rx.NewClientWithToken(&token)
+	return goreydenx.NewClientWithToken(&token)
 }
 
 func (o *Config) clear() {

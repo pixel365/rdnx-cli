@@ -12,9 +12,9 @@ import (
 	"time"
 
 	"github.com/fatih/color"
-	rx "github.com/pixel365/goreydenx"
+	"github.com/pixel365/goreydenx"
 	"github.com/pixel365/goreydenx/action"
-	m "github.com/pixel365/goreydenx/model"
+	"github.com/pixel365/goreydenx/model"
 )
 
 const (
@@ -73,7 +73,7 @@ func AuthGuard() {
 	}
 }
 
-func Next[T any](r *m.Result[T]) bool {
+func Next[T any](r *model.Result[T]) bool {
 	if !r.HasNext() {
 		return false
 	}
@@ -91,8 +91,8 @@ func Next[T any](r *m.Result[T]) bool {
 	}
 }
 
-func AskMultipleIntValues() m.Identifiers {
-	var identifiers m.Identifiers
+func AskMultipleIntValues() model.Identifiers {
+	var identifiers model.Identifiers
 	reader := bufio.NewReader(os.Stdin)
 Loop:
 	for {
@@ -198,7 +198,7 @@ func Marshal(result any, e error) {
 	fmt.Println(string(j))
 }
 
-func WaitingTask(c *rx.Client, result *m.ActionResult) {
+func WaitingTask(c *goreydenx.Client, result *model.ActionResult) {
 	reader := bufio.NewReader(os.Stdin)
 Loop:
 	for {
@@ -209,7 +209,7 @@ Loop:
 		case "y":
 			var wg sync.WaitGroup
 			wg.Add(1)
-			go func(wg *sync.WaitGroup, result *m.ActionResult) {
+			go func(wg *sync.WaitGroup, result *model.ActionResult) {
 				defer wg.Done()
 				for {
 					status, err := action.TaskStatus(c, result.OrderId, result.Task.Id)

@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func NewLogoutCommands() (command *cobra.Command) {
+func NewLogoutCommand() (command *cobra.Command) {
 	command = &cobra.Command{
 		Use:     "logout",
 		Aliases: []string{"exit", "bye"},
@@ -23,6 +23,6 @@ func NewLogoutCommands() (command *cobra.Command) {
 			}
 		},
 	}
-	command.AddCommand(logout.NewLogoutAllCmd())
+	command.AddCommand(logout.NewLogoutAllCommand())
 	return
 }
