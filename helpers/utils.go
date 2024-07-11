@@ -236,3 +236,47 @@ Loop:
 		}
 	}
 }
+
+func AskLaunchMode() (launchMode string, delayTime int) {
+	delayTime = 0
+	delayTimeFn := func() int {
+		value := AskIntegerValue(
+			"Delay start for (minutes):",
+			"Invalid Value: The value must be >= 0",
+			false,
+		)
+		return value
+	}
+
+	color.Green("STEP 5:")
+	fmt.Println("1) Auto")
+	fmt.Println("2) Manual")
+	fmt.Println("3) Delay")
+
+Loop:
+	for {
+		value := AskIntegerValue(
+			"Select launch mode:",
+			"Invalid Value: The value must be from 1 to 3",
+			false,
+		)
+		switch value {
+		case 1:
+			launchMode = "auto"
+			break Loop
+		case 2:
+			launchMode = "manual"
+			break Loop
+		case 3:
+			launchMode = "delay"
+			delayTime = delayTimeFn()
+			for delayTime < 5 || delayTime > 240 {
+				color.Red("The number of minutes for delayed start should be from 5 to 240")
+				delayTime = delayTimeFn()
+			}
+			break Loop
+		}
+		color.Red("Invalid number, please select another one")
+	}
+	return
+}

@@ -51,5 +51,6 @@ func NewOrdersCommand() (command *cobra.Command) {
 	command.AddCommand(orders.NewOrderIncreaseOnCommand(&client))
 	command.AddCommand(orders.NewOrderIncreaseOffCommand(&client))
 	command.AddCommand(orders.NewCreateOrderCommand(&client))
+	command.AddCommand((orders.NewChangeLaunchModeCommand(&client)))
 	return
 }

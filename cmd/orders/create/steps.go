@@ -93,44 +93,8 @@ Loop:
 	return
 }
 
-func step5() (launchMode string, delayTime int) {
-	delayTime = 0
-	delayTimeFn := func() int {
-		value := helpers.AskIntegerValue(
-			"Delay the launch for (minutes):",
-			"Invalid Value: The value must be >= 0",
-			true,
-		)
-		return value
-	}
-
-	color.Green("STEP 5:")
-	fmt.Println("1) Auto")
-	fmt.Println("2) Manual")
-	fmt.Println("3) Delay")
-
-Loop:
-	for {
-		value := helpers.AskIntegerValue(
-			"Select startup mode:",
-			"Invalid Value: The value must be from 1 to 3",
-			false,
-		)
-		switch value {
-		case 1:
-			launchMode = "auto"
-			break Loop
-		case 2:
-			launchMode = "manual"
-			break Loop
-		case 3:
-			launchMode = "delay"
-			delayTime = delayTimeFn()
-			break Loop
-		}
-		color.Red("Invalid number, please select another one")
-	}
-	return
+func step5() (string, int) {
+	return helpers.AskLaunchMode()
 }
 
 func step6() (enabled bool, minutes int) {
